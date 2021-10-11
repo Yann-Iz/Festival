@@ -58,8 +58,12 @@ class='tabNonQuadrille'>
          {
             $idEtab=$id;
             $req2=obtenirNbOccup($dbh, $idEtab);
-            echo "
-            <td width='16%'> ($req2 attributions) </td>";          
+            $nbMax=obtenirEtabComplet($dbh, $id);
+            if ($req2==$nbMax){
+               echo "<td width='16%'> Complet </td>";
+            }else{echo "
+            <td width='16%'> ($req2 attributions) </td>";}
+                      
 			}
 			echo "
       </tr>";

@@ -184,6 +184,17 @@ function obtenirNbOccup($dbh, $idEtab)
    return $lgOccup["totalChambresOccup"];
 }
 
+
+function obtenirEtabComplet($connexion,$id){
+   $req="select nombreChambresOffertes from Etablissement where id='$id'";
+   $rsOccup=$connexion->query($req);
+   $lgOccup=$rsOccup->fetchAll();
+   foreach ($lgOccup as $row){
+      $totalChambresOccup=$row['nombreChambresOffertes'];
+   }
+   return $totalChambresOccup;
+}
+
 // Met à jour (suppression, modification ou ajout) l'attribution correspondant à
 // l'id étab et à l'id groupe transmis
 function modifierAttribChamb($dbh, $idEtab, $idGroupe, $nbChambres)
